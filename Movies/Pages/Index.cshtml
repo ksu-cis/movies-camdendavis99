@@ -11,26 +11,28 @@
     <input type="submit" value="Search" />
 
     <h2>>MPAA Rating</h2>
-    <label>
-        <input type="checkbox" name="rating" value="G" />
-        Rated G
-    </label>
-    <label>
-        <input type="checkbox" name="rating" value="PG" />
-        Rated PG
-    </label>
-    <label>
-        <input type="checkbox" name="rating" value="PG-13" />
-        Rated PG-13
-    </label>
-    <label>
-        <input type="checkbox" name="rating" value="R" />
-        Rated R
-    </label>
-    <label>
-        <input type="checkbox" name="rating" value="NC-17" />
-        Rated NC-17
-    </label>
+    <div class="checkbox-list">
+        <label>
+            <input type="checkbox" name="rating" value="G" />
+            Rated G
+        </label>
+        <label>
+            <input type="checkbox" name="rating" value="PG" />
+            Rated PG
+        </label>
+        <label>
+            <input type="checkbox" name="rating" value="PG-13" />
+            Rated PG-13
+        </label>
+        <label>
+            <input type="checkbox" name="rating" value="R" />
+            Rated R
+        </label>
+        <label>
+            <input type="checkbox" name="rating" value="NC-17" />
+            Rated NC-17
+        </label>
+    </div>
 </form>
 
 @foreach (Movie movie in Model.Movies)
