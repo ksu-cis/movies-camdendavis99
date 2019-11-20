@@ -10,6 +10,12 @@ form {
     background-color: lightgray;
 }
 
+.search {
+    position: absolute;
+    right: 0px;
+    width: 400px;
+}
+
 .checkbox-list {
     display: flex;
     flex-direction: column;

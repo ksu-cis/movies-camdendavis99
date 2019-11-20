@@ -28,39 +28,55 @@ namespace Movies
 
         public List<Movie> All { get { return movies; } }
 
-        public List<Movie> SearchAndFilter(string searchString, List<string> ratings)
+        public List<Movie> Search(List<Movie> movies, string term)
         {
-            if (searchString == null && ratings.Count == 0) return All;
-
             List<Movie> results = new List<Movie>();
+
             foreach (Movie movie in movies)
             {
-                // Case 1: Search string AND ratings
-                if (searchString != null && ratings.Count > 0)
-                {
-                    if (ratings.Contains(movie.MPAA_Rating) && movie.Title != null && movie.Title.Contains(searchString, StringComparison.InvariantCultureIgnoreCase) )
-                    {
-                        results.Add(movie);
-                    }
-                }
-                // Case 2: Search string only
-                else if (searchString != null)
-                {
-                    if (movie.Title != null && movie.Title.Contains(searchString, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        results.Add(movie);
-                    }
-                }
-                // Case 3: Ratings only
-                else
-                {
-                    if (ratings.Contains(movie.MPAA_Rating))
-                    {
-                        results.Add(movie);
-                    }
-                }
-                
+                if (movie.Title != null && movie.Title.Contains(term, StringComparison.OrdinalIgnoreCase))
+                    results.Add(movie);
             }
+
+            return results;
+        }
+
+        public List<Movie> FilterByMPAA(List<Movie> movies, List<string> mpaa)
+        {
+            List<Movie> results = new List<Movie>();
+
+            foreach (Movie movie in movies)
+            {
+                if (mpaa.Contains(movie.MPAA_Rating))
+                    results.Add(movie);
+            }
+
+            return results;
+        }
+
+        public List<Movie> FilterByMinIMDB(List<Movie> movies, float rating)
+        {
+            List<Movie> results = new List<Movie>();
+
+            foreach (Movie movie in movies)
+            {
+                if (movie.IMDB_Rating != null && movie.IMDB_Rating >= rating)
+                    results.Add(movie);
+            }
+
+            return results;
+        }
+
+        public List<Movie> FilterByMaxIMDB(List<Movie> movies, float rating)
+        {
+            List<Movie> results = new List<Movie>();
+
+            foreach (Movie movie in movies)
+            {
+                if (movie.IMDB_Rating != null && movie.IMDB_Rating <= rating)
+                    results.Add(movie);
+            }
+
             return results;
         }
     }
