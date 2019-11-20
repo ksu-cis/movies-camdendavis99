@@ -9,8 +9,6 @@ namespace Movies.Pages
 {
     public class IndexModel : PageModel
     {
-        public MovieDatabase MovieDatabase = new MovieDatabase();
-
         public List<Movie> Movies;
         
         [BindProperty]
